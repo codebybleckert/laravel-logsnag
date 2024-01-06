@@ -11,7 +11,7 @@ final class Channel extends HttpClient
 
     public function log(
         string $event,
-        ?string $description = null,
+        string $description = '',
         ?string $icon = null,
         bool $notify = false,
         ?array $tags = null,
