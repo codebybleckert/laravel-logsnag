@@ -20,4 +20,12 @@ class Logsnag extends HttpClient
             'icon' => $icon,
         ]);
     }
+
+    public function identify(int|string $id, array $properties): void
+    {
+        $this->post('identify', [
+            'user_id' => (string) $id,
+            'properties' => $properties,
+        ]);
+    }
 }
