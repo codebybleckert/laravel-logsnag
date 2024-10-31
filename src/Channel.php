@@ -26,8 +26,12 @@ final class Channel extends HttpClient
             'parser' => $parser,
         ];
 
-        if ($tags && count($tags) > 0) {
+        if ($tags !== null && count($tags) > 0) {
             $data['tags'] = $tags;
+        }
+
+        if (auth()->user()) {
+            $data['user_id'] = auth()->user()->{config('logsnag.user_id_field')};
         }
 
         $this->post('log', $data);

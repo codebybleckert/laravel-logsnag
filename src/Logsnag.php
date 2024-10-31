@@ -21,8 +21,16 @@ class Logsnag extends HttpClient
         ]);
     }
 
-    public function identify(int|string $id, array $properties): void
+    public function identify(array $properties = []): void
     {
+        $user = auth()->user();
+
+        if ($user === null) {
+            return;
+        }
+
+        $id = $user->{config('logsnag.user_id_field')};
+
         $this->post('identify', [
             'user_id' => (string) $id,
             'properties' => $properties,
