@@ -8,4 +8,5 @@ return [
     'api_key' => env('LOGSNAG_API_KEY'),
     'project' => env('LOGSNAG_PROJECT'),
     'queue' => env('LOGSNAG_QUEUE', 'default'),
+    'user_id_field' => 'id',
 ];
