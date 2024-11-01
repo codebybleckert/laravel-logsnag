@@ -27,9 +27,5 @@ class LaravelLogsnagServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'logsnag');
         $this->app->singleton(Logsnag::class, fn () => new Logsnag);
-
-        Event::listen(fn (Authenticated $event) => $this->app->make(Logsnag::class)->identify([
-            'email' => $event->user->email,
-        ]));
     }
 }
